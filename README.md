@@ -1,3 +1,5 @@
+Fork from [TheNaox](https://github.com/TheNaoX/freegeoip)'s repo to [update the endpoint and add the access key.](https://github.com/apilayer/freegeoip/#freegeoip---important-announcement) for a project.
+
 # Freegeoip Ruby
 
 A Ruby library for the [Freegeoip API](http://freegeoip.net).
@@ -17,6 +19,16 @@ And then execute:
 Or install it yourself as:
 
     $ gem install freegeoip-ruby
+
+## Required Changes to Legacy Integrations (freegeoip.net/json/xml)
+
+Taken from [Freegeoip](https://github.com/apilayer/freegeoip/#required-changes-to-legacy-integrations-freegeoipnetjsonxml) new repo's README:
+
+```
+As of March 31 2018 the old freegeoip API is deprecated and a completely re-designed API is now accessible at http://api.ipstack.com. While the new API offers the same capabilities as the old one and also has the option of returning data in the legacy format, the API URL has now changed and all users are required to sign up for a free API Access Key to use the service.
+```
+
+For this gem, go to [ipstack](https://ipstack.com/) and create an account. Then put your access key in an environment variable (or .env file if you're using dotenv) as `IPSTACK_ACCESSS_KEY`. That's it.
 
 ## Usage
 
@@ -74,4 +86,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/TheNao
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

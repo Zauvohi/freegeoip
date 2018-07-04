@@ -4,8 +4,9 @@ require 'net/http'
 
 module Freegeoip
   class Request
-    ENDPOINT = "http://freegeoip.net/"
+    ENDPOINT = "http://api.ipstack.com/"
     FORMAT = 'json'
+    ACCESS_KEY = ENV['IPSTACK_ACCESSS_KEY']
 
     attr_reader :remote
 
@@ -14,7 +15,7 @@ module Freegeoip
     end
 
     def get
-      uri = URI(ENDPOINT + FORMAT + "/" + remote)
+      uri = URI(ENDPOINT + remote + "?access_key=#{ACCESS_KEY}&output=#{FORMAT}")
       res = Net::HTTP.get(uri)
 
       JSON.parse(res)

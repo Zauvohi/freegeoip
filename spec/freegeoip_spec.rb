@@ -13,19 +13,20 @@ describe Freegeoip do
     end
 
     it "returns the data from google.com" do
-      res = Freegeoip.get('google.com')
+      res = Freegeoip.get('134.201.250.155')
 
       expect(res.ip).to_not be_empty
       expect(res.country_code).to eq "US"
       expect(res.country_name).to eq "United States"
       expect(res.region_code).to eq "CA"
       expect(res.region_name).to eq "California"
-      expect(res.city).to eq "Mountain View"
-      expect(res.zip_code).to eq "94043"
-      expect(res.time_zone).to eq "America/Los_Angeles"
-      expect(res.latitude).to eq 37.4192
-      expect(res.longitude).to eq -122.0574
-      expect(res.metro_code).to eq 807
+      expect(res.city).to eq "Huntington Beach"
+      expect(res.zip).to eq "92648"
+      # For the new API, this field is basic accounts (10 USD) onwards and it's an object
+      # expect(res.time_zone).to eq "America/Los_Angeles"
+      expect(res.time_zone).to be_kind_of Hash
+      expect(res.latitude).to eq 33.6746
+      expect(res.longitude).to eq -118.0086
     end
   end
 end
